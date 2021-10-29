@@ -5,8 +5,8 @@
 
   <div class="form">
     <div class="form__item">
-        <label for="valueA" class="form__item-title">Enter value a</label>
-        <input type="" id="valueA" name="" class="form__item-input" placeholder="5">
+      <label for="valueA" class="form__item-title">Enter value a</label>
+      <input type="" id="valueA" name="" class="form__item-input" placeholder="5">
     </div>
     <div class="form__item">
       <label for="valueB" class="form__item-title">Enter value b</label>
@@ -17,72 +17,67 @@
       <input type="text" id="mathOperator" name="" class="form__item-input" placeholder="+-*/">
     </div>
     <div class="form__btn">
-                    <button class="form__btn-reset" type"reset" onclick="Reset()">Reset</button>
-                    <button class="form__btn-send" type"submit" onclick="Calc()">Calculate</button>
-
+      <button class="form__btn-reset" type"reset" onclick="Reset()">Reset</button>
+      <button class="form__btn-send" type"submit" onclick="Calc()">Calculate</button>
     </div>
- </div>
+  </div>
+
   <script>
-    function Reset (){
+    function Reset() {
       document.getElementById("valueA").value = null
       document.getElementById("valueB").value = null
       document.getElementById("mathOperator").value = null
     }
 
-    function Calc () {
-   let valueA =  document.getElementById("valueA").value
-   let valueB =  document.getElementById("valueB").value
-   let mathOperator =  document.getElementById("mathOperator").value
-   
-   
-   let operands = Validate (valueA, valueB, mathOperator)
-   
-   if (!operands){
-    return
-   }
-  
-         if (mathOperator === '+'){
-          alert (operands.valueA + operands.valueB );
-        } else if (mathOperator === '-'){
-          alert ( operands.valueA - operands.valueB );
-        } else if (mathOperator === '*'){
-          alert ( operands.valueA * operands.valueB );
-        } else if (mathOperator === '/'){
-          alert ( operands.valueA / operands.valueB );
-        } else if (mathOperator === '**'){
-          alert ( operands.valueA ** operands.valueB );
-        } else if (mathOperator === '%'){
-          alert ( operands.valueA % operands.valueB );
-        }
-        
-        else {
-            alert ('unknown operation');
-        } 
-  }
-   
-  function Validate (valueA, valueB, mathOperator) {
-    if (!valueA || !valueB || !mathOperator){
-  
-  alert ('Error2');
-  return false
-  }
+    function Calc() {
+      let valueA = document.getElementById("valueA").value
+      let valueB = document.getElementById("valueB").value
+      let mathOperator = document.getElementById("mathOperator").value
+      let operands = Validate(valueA, valueB, mathOperator)
 
-  valueA = +valueA;
-  valueB = +valueB;
-    
-    if ( isNaN(valueA) || isNaN(valueB) ){
-    alert ('Error');
-    return false
-  }
-  return {
-    valueA, valueB
-  }
+      if (!operands) {
+        return
+      }
+
+      if (mathOperator === '+') {
+        alert(operands.valueA + operands.valueB);
+      } else if (mathOperator === '-') {
+        alert(operands.valueA - operands.valueB);
+      } else if (mathOperator === '*') {
+        alert(operands.valueA * operands.valueB);
+      } else if (mathOperator === '/') {
+        alert(operands.valueA / operands.valueB);
+      } else if (mathOperator === '**') {
+        alert(operands.valueA ** operands.valueB);
+      } else if (mathOperator === '%') {
+        alert(operands.valueA % operands.valueB);
+      }
+
+      else {
+        alert('unknown operation');
+      }
+    }
+
+    function Validate(valueA, valueB, mathOperator) {
+      if (!valueA || !valueB || !mathOperator) {
+        alert('Error2');
+        return false
+      }
+
+      valueA = +valueA;
+      valueB = +valueB;
+
+      if (isNaN(valueA) || isNaN(valueB)) {
+        alert('Error');
+        return false
+      }
+      return {
+        valueA, 
+        valueB
+      }
     }
 
 
-</script>
-
-
+  </script>
 </body>
-
 </html>
