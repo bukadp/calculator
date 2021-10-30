@@ -23,59 +23,55 @@
   </div>
 
   <script>
-    function Reset() {
-      document.getElementById("valueA").value = null
-      document.getElementById("valueB").value = null
-      document.getElementById("mathOperator").value = null
-    }
+    const valueAElement = document.getElementById('valueA');
+		const valueBElement = document.getElementById('valueB');
+		const mathOperatorElement = document.getElementById('mathOperator');
 
-    function Calc() {
-      let valueA = document.getElementById("valueA").value
-      let valueB = document.getElementById("valueB").value
-      let mathOperator = document.getElementById("mathOperator").value
-      let operands = Validate(valueA, valueB, mathOperator)
+		function Reset() {
+			valueAElement.value = null
+			valueBElement.value = null
+			mathOperatorElement.value = null
+		}
 
-      if (!operands) {
-        return
-      }
+		function Calc() {
+			let valueA = +valueAElement.value
+			let valueB = +valueBElement.value
+			let mathOperator = mathOperatorElement.value
 
-      if (mathOperator === '+') {
-        alert(operands.valueA + operands.valueB);
-      } else if (mathOperator === '-') {
-        alert(operands.valueA - operands.valueB);
-      } else if (mathOperator === '*') {
-        alert(operands.valueA * operands.valueB);
-      } else if (mathOperator === '/') {
-        alert(operands.valueA / operands.valueB);
-      } else if (mathOperator === '**') {
-        alert(operands.valueA ** operands.valueB);
-      } else if (mathOperator === '%') {
-        alert(operands.valueA % operands.valueB);
-      }
+			if (!Validate(valueA, valueB)) {
+				return
+			}
 
-      else {
-        alert('unknown operation');
-      }
-    }
+			if (mathOperator === '+') {
+				alert(valueA + valueB);
+			} else if (mathOperator === '-') {
+				alert(valueA - valueB);
+			} else if (mathOperator === '*') {
+				alert(valueA * valueB);
+			} else if (mathOperator === '/') {
+				if (valueB === 0) {
+					alert("Division by zero");
+				} else {
+					alert(valueA / valueB);
+				}
+			} else if (mathOperator === '**') {
+				alert(valueA ** valueB);
+			} else if (mathOperator === '%') {
+				alert(valueA % valueB);
+			}
 
-    function Validate(valueA, valueB, mathOperator) {
-      if (!valueA || !valueB || !mathOperator) {
-        alert('Error2');
-        return false
-      }
+			else {
+				alert('unknown operation');
+			}
+		}
 
-      valueA = +valueA;
-      valueB = +valueB;
-
-      if (isNaN(valueA) || isNaN(valueB)) {
-        alert('Error');
-        return false
-      }
-      return {
-        valueA, 
-        valueB
-      }
-    }
+		function Validate(valueA, valueB) {
+			if (isNaN(valueA) || isNaN(valueB)) {
+				alert('Error');
+				return false
+			}
+			return true
+		}
 
 
   </script>
